@@ -1,0 +1,30 @@
+.iconfont {
+    font-family: "iconfont" !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.heart:before {
+    content: "\eca1";
+}
+.heart-fill:before {
+    content: "\e602";
+    color: #e99399;
+}
+
+.container {
+    display: inline-flex;
+    align-items: flex-start;
+    padding: 10rpx;
+}
+.iconfont {
+    font-size: 32rpx;
+    color: #333;
+}
+.like-count {
+    position: relative;
+    bottom: 6rpx;
+    left: 6rpx;
+    font-size: 24rpx;
+    color: #bbb;
+}

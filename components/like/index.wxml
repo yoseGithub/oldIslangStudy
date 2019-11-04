@@ -1,0 +1,4 @@
+<view class="container" bindtap="onLike">
+    <view class="iconfont {{like ? 'heart-fill' : 'heart'}}"></view>
+    <text class="like-count">{{count}}</text>
+</view>

@@ -1,0 +1,18 @@
+<wxs module="filter">
+    function fillNumber (num) {
+        return num > 9 ? num : '0' + num
+    }
+
+    module.exports.fillNum = fillNumber;
+</wxs>
+
+<view class="container">
+    <view class="num-wrap">
+        <text class="sign">No.</text>
+        <text class="epsoide-num">{{filter.fillNum(index)}}</text>
+    </view>
+    <view class="data-wrap">
+        <text class="month">{{month}}</text>
+        <text class="year">{{year}}</text>
+    </view>
+</view>

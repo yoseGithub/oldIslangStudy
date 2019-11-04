@@ -1,0 +1,32 @@
+.iconfont {
+    display: block;
+    width: 80rpx;
+    height: 80rpx;
+    font-size: 36rpx;
+    color: #333;
+    text-align: center;
+    line-height: 80rpx;
+    font-family: "iconfont" !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.on-next:before {
+    content: "\e635";
+}
+.on-previous:before {
+    content: "\e637";
+}
+.disable {
+    color: #ccc;
+}
+
+.nav-bar {
+    display: flex;
+    width: 680rpx;
+    height: 80rpx;
+    font-size: 28rpx;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f7f7f7;
+}

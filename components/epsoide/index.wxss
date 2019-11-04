@@ -1,0 +1,40 @@
+.container {
+    display:flex;
+}
+.sign {
+    font-size: 32rpx;
+}
+.epsoide-num {
+    margin-left: 6rpx;
+    font-size: 58rpx;
+    font-weight: 700;
+}
+.data-wrap {
+    position: relative;
+    display: flex;
+    margin-left: 32rpx;
+    padding:  6rpx 0;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.data-wrap::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -16rpx;
+    width: 1px;
+    height: 40rpx;
+    background-color: #000;
+    transform: translateY(-50%);
+}
+.month,
+.year {
+    display: block;
+}
+.month {
+    font-size: 24rpx;
+}
+.year {
+    font-size: 20rpx;
+}
