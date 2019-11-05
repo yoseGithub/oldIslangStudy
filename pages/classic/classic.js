@@ -1,4 +1,8 @@
-import { classic, like } from "../../utils/instanceModel.js";
+// import regeneratorRuntime from '../../utils/regenerator.js';
+// const moment = require('../../utils/monent');
+// https://www.jianshu.com/p/e622dee9de99
+
+import { classicIns, likeIns } from "../../utils/instanceModel.js";
 
 Page({
     /**
@@ -12,29 +16,35 @@ Page({
 
     onLike (e) {
         let classic = this.data.classic,
-            behavior = e.detail.behavior,
+            behavior = e.detail.behavior, // like组件中发送出来的behavior
             { id, type } = classic;
 
-        like.toggleLike(behavior, id, type);
+        likeIns.toggleLike(behavior, id, type);
     },
 
-    onNext () {
-
+    onNext (e) {
+        
     },
 
-    onPrevious () {
-
+    onPrevious (e) {
+        let index = this.data.classic.index;
+    
+        classicIns.getPrevious(index, (res) => {
+            this.setData({
+                classic: res
+            })
+        });
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        classic.getLatest(res => {
+        classicIns.getLatest(res => {
             this.setData({
                 classic: res
             })
-        })
+        });
     },
 
     /**

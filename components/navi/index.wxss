@@ -11,11 +11,11 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-.on-next:before {
-    content: "\e635";
-}
-.on-previous:before {
+.on-left:before {
     content: "\e637";
+}
+.on-right:before {
+    content: "\e635";
 }
 .disable {
     color: #ccc;

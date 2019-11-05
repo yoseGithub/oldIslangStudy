@@ -2,10 +2,10 @@
 
 // 期刊
 import { classModel } from '../models/classic';
-const classic = new classModel();
+const classicIns = new classModel();
 
 // 点赞
 import { likeModel } from '../models/like';
-const like = new likeModel();
+const likeIns = new likeModel();
 
-export { classic, like };
+export { classicIns, likeIns };

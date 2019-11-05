@@ -1,0 +1,14 @@
+.iconfont {
+    font-size: 32rpx;
+    color: #333;
+    font-family: "iconfont" !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.play:before {
+    content: "\e7cd";
+}
+.pause:before {
+    content: "\e7cb";
+}

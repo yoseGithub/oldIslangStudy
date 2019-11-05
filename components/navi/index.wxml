@@ -1,5 +1,5 @@
 <view class="nav-bar">
-    <view class="on-previous iconfont {{first ? 'disable' : ''}}" bindtap="onPrevious"></view>
+    <view class="on-left iconfont {{latest ? 'disable' : ''}}" bindtap="onLeft"></view>
     <text>{{title}}</text>
-    <view class="on-next iconfont {{lastest ? 'disable' : ''}}" bindtap="onNext"></view>
+    <view class="on-right iconfont {{first ? 'disable' : ''}}" bindtap="onRight"></view>
 </view>

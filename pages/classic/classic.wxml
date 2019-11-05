@@ -5,11 +5,11 @@
     </view>
 
     <v-movie class="movie" img="{{classic.image}}" content="{{classic.content}}"></v-movie>
-
+    <text>{{first}}</text>
     <v-navi class="nav-bar"
         title="{{classic.title}}"
-        first="first"
-        latest="latest"
-        bindnext="next"
-        bindprevious="previous"></v-navi>
+        first="{{first}}"
+        latest="{{latest}}"
+        bind:left="onNext"
+        bind:right="onPrevious"></v-navi>
 </view>
