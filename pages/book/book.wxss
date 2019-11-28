@@ -1,0 +1,63 @@
+page {
+    background-color: #f9f9f9;
+}
+
+.select-header {
+    position: fixed;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 110rpx;
+    box-shadow: 0 0 2px #999;
+    background-color: #fff;
+}
+
+.select-header .box {
+    display: flex;
+    width: 690rpx;
+    height: 68rpx;
+    justify-content: center;
+    align-items: center;
+    font-size: 28rpx;
+    color: #999;
+    border-radius: 34rpx;
+    background-color: #f7f7f7;
+}
+
+.iconfont {
+    margin-right: 10rpx;
+    font-family: "iconfont" !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.select::before {
+    content: "\e60c";
+}
+
+.book-container {
+    padding-top: 148rpx;
+}
+
+.quality {
+    display: block;
+    width: 127rpx;
+    height: 34rpx;
+    margin: 0 auto;
+}
+
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 30rpx;
+    justify-content: space-between;
+}
+
+.book-item {
+    display: block;
+    width: 50%;
+    padding: 30rpx 0;
+}

@@ -1,0 +1,78 @@
+<wxs src="../../utils/filter.wxs" module="util" />
+
+<view class="container">
+    <view class="head page-wrap">
+        <image class="book" src="{{book.image}}"></image>
+        <text class="title">{{book.title}}</text>
+        <text class="author">{{book.author}}</text>
+    </view>
+
+    <view class="short-comment page-wrap">
+        <text class="g-hd">短评</text>
+        <text wx:if="{{!comments.length}}" class="shadow">暂无短评</text>
+        <view class="comments">
+            <block wx:for="{{util.limit(comments, 10)}}" wx:key="index">
+                <v-tag class="tag-item-cpt" tag-class="ex-tag" text="{{item.content}}">
+                     <text slot="after" class="fav-num">+{{item.nums}}</text>
+                </v-tag>
+            </block>
+        </view>
+    </view>
+
+    <view class="book-content page-wrap">
+        <text class="g-hd">内容简介</text>
+        <text class="summary" decode="true">&emsp;&emsp;{{util.format(book.summary)}}</text>
+    </view>
+
+    <view class="book-info page-wrap">
+        <text class="g-hd">书本信息</text>
+        <view class="info-list">
+            <view class="info-item">
+                <text class="label">出版社</text>
+                <text>{{book.publisher}}</text>
+            </view>
+            <view class="info-item">
+                <text class="label">出版年</text>
+                <text>{{book.pubdate}}</text>
+            </view>
+            <view class="info-item">
+                <text class="label" space="emsp"> 页数</text>
+                <text>{{book.pages}}</text>
+            </view>
+            <view class="info-item">
+                <text class="label" space="emsp"> 定价</text>
+                <text>{{book.price}}</text>
+            </view>
+            <view class="info-item">
+                <text class="label" space="emsp"> 装帧</text>
+                <text>{{book.binding}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="post-container" wx:if="{{!posting}}">
+    <view bind:tap="onFakePost" class="post-fake">
+        <text>请输入短评</text>
+    </view>
+    <v-like bindlike="onLike" like="{{likeStatus}}" count="{{likeCount}}" />
+</view>
+
+
+<v-mask  wx:if="{{posting}}" wx:if="{{posting}}">
+    <view class="posting-container" slot="content">
+        <view class="post-header">
+            <text wx:if="{{comments.length}}">仅可点击标签+1</text>
+            <text wx:else>暂无评论</text>
+            <text bind:tap="onCancel" class="cancel">取消</text>
+        </view>
+        <view class="comment-container">
+            <block wx:for="{{util.limit(comments, 3)}}" wx:key="index">
+                <v-tag bind:tapping="onPost" class="tag-item-cpt" tag-class="ex-tag" text="{{item.content}}">
+                    <text slot="after" class="fav-num">+{{item.nums}}</text>
+                </v-tag>
+            </block>
+        </view>
+        <input bindconfirm="onPost" class="post" placeholder="短评最多12个字"></input>
+    </view>
+</v-mask>

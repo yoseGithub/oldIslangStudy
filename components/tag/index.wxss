@@ -1,0 +1,18 @@
+.tag-item {
+    height: 52rpx;
+    line-height: 50rpx;
+    padding: 0 28rpx;
+    border-radius: 26rpx;
+    background-color: #f7f7f7;
+}
+
+.text {
+    color: #666;
+    font-size: 24rpx;
+}
+
+.fav-num {
+    margin-left: 14rpx;
+    color: #bbb;
+    font-size: 20rpx;
+}

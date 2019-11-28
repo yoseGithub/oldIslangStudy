@@ -11,7 +11,9 @@ Page({
     data: {
         classic: null,
         latest: true,
-        first: false
+        first: false,
+        likeCount: 0, // 点赞数
+        likeStatus: false // 用户点赞状态
     },
 
     onLike (e) {
@@ -23,16 +25,33 @@ Page({
     },
 
     onNext (e) {
-        
+        this._updateClassic('next');
     },
 
-    onPrevious (e) {
+    onPrevious(e) {
+        this._updateClassic('previous');
+    },
+
+    _updateClassic (nextOrPrevious) {
         let index = this.data.classic.index;
-    
-        classicIns.getPrevious(index, (res) => {
+
+        classicIns.getClassic(index, nextOrPrevious, (res) => {
+            this._getLikeStatus(res.id, res.type);
+
             this.setData({
-                classic: res
+                classic: res,
+                latest: classicIns.isLatest(res.index),
+                first: classicIns.isFirst(res.index)
             })
+        });
+    },
+
+    _getLikeStatus (artID, category) {
+        likeIns.getClassicLikeStatus(artID, category, res => {
+            this.setData({
+                likeStatus: res.like_status,
+                likeCount: res.fav_nums
+            });
         });
     },
 
@@ -41,9 +60,13 @@ Page({
      */
     onLoad: function (options) {
         classicIns.getLatest(res => {
+            let { like_status: likeStatus, fav_nums: likeCount } = res;
+
             this.setData({
-                classic: res
-            })
+                classic: res,
+                likeStatus,
+                likeCount
+            });
         });
     },
 

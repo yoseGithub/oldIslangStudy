@@ -1,0 +1,3 @@
+<view class="container">
+    <slot name="content"></slot>
+</view>

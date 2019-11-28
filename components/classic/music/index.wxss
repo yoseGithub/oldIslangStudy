@@ -1,14 +1,43 @@
+@import "../common.wxss";
+
 .iconfont {
-    font-size: 32rpx;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 96rpx;
     color: #333;
     font-family: "iconfont" !important;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    transform: translate(-50%, -50%);
 }
 .play:before {
     content: "\e7cd";
 }
 .pause:before {
     content: "\e7cb";
+}
+
+.cd-block {
+    position: relative;
+    width: 422rpx;
+    height: 422rpx;
+    margin: 40rpx auto;
+    border-radius: 50%;
+}
+
+.classic-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.rotation {
+    animation: rotate 12s linear infinite;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
 }

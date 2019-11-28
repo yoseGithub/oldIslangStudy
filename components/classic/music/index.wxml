@@ -1,6 +1,8 @@
-<view class="classic-container">
-    <image class="classic-img" src="{{img}}"></image>
-    <view class="iconfont {{isplay ? 'play' : 'pause'}}"></view>
-    <image class="tag" src="images/movie@tag.png"></image>
+<view hidden="{{hidden}}" class="classic-container">
+    <view class="cd-block" bind:tap="onPlay">
+        <image class="classic-img {{isPlay ? 'rotation' : ''}}" src="{{img}}"></image>
+        <view class="iconfont {{!isPlay ? 'play' : 'pause'}}"></view>
+    </view>
+    <image class="tag" src="images/music@tag.png"></image>
     <text class="content">{{content}}</text>
 </view>

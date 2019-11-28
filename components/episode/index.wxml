@@ -6,6 +6,8 @@
     module.exports.fillNum = fillNumber;
 </wxs>
 
+
+
 <view class="container">
     <view class="num-wrap">
         <text class="sign">No.</text>

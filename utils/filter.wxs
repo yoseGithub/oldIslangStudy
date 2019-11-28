@@ -1,0 +1,17 @@
+var format = function (text) {
+    // 初始化的时候，由于数据是空的，也会执行到wxs，所以需要对数据进行一下判断
+    if (!text) return;
+
+    // 四个反斜杠，因为服务器返回回来的是两个反斜杠，需要对这两个反斜杠进行转义，那么加起来就是四个
+    var reg = getRegExp('\\\\n', 'g');
+    return text.replace(reg, '\n&emsp;&emsp;');
+};
+
+var limit = function (array, length) {
+    return array.splice(0, length);
+};
+
+module.exports = {
+    format: format,
+    limit: limit
+};
