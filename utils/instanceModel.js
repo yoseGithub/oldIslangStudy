@@ -12,4 +12,8 @@ const likeIns = new LikeModel();
 import { BookModel } from '../models/book';
 const bookIns = new BookModel();
 
-export { classicIns, likeIns, bookIns };
+// 搜索
+import {KeywordModel} from '../models/keyword.js';
+const keywordIns = new KeywordModel();
+
+export { classicIns, likeIns, bookIns, keywordIns };
