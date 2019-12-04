@@ -38,10 +38,17 @@
   margin-bottom: 25rpx;
 }
 
+.delete-area {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 44px;
+    height: 34px;
+}
 .cancel-img {
   width: 14px;
   height: 14px;
-  margin-right: 10px;
+  padding-right: 10px;
 }
 
 .books-container {
@@ -131,7 +138,7 @@
   border-bottom-right-radius: 15px;
   display: inline-block;
   height: 34px;
-  width: 500rpx;
+  width: 456rpx;
   font-size: 14px;
 }
 

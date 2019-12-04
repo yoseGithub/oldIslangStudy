@@ -1,5 +1,4 @@
-import {keywordIns} from '../../utils/instanceModel.js';
-console.log(keywordIns);
+import { keywordIns, bookIns } from '../../utils/instanceModel.js';
 
 Component({
     /**
@@ -14,7 +13,10 @@ Component({
      */
     data: {
         historyWords: [],
-        hotWords: []
+        hotWords: [],
+        dataArray: [],
+        searching: false,
+        q: ''
     },
 
     /**
@@ -24,20 +26,41 @@ Component({
         onCancel (e) {
             this.triggerEvent('cancel', {});
         },
+
+        onDelete (e) {
+            this.setData({
+                searching: false
+            })
+        },
+
         onConfirm (e) {
-            const word = e.detail.value;
-            keywordIns.addToHistory(word);
+            this.setData({
+                searching: true
+            });
+
+            const q = e.detail.value || e.detail.text;
+
+            bookIns.search(0, q).then(res => {
+                this.setData({
+                    dataArray: res.books,
+                    q
+                });
+
+                console.log(res.books.length)
+                // 仅保存有效信息
+                if (res.books.length) {
+                    keywordIns.addToHistory(q);
+                }
+            });
         }
     },
 
     attached () {
-        const historyWords = keywordIns.getHistory();
-        const hotWords = keywordIns.getHot();
         this.setData({
-            historyWords
+            historyWords: keywordIns.getHistory()
         });
 
-        hotWords.then(res => {
+        keywordIns.getHot().then(res => {
             this.setData({
                 hotWords: res.hot
             })

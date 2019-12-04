@@ -45,6 +45,17 @@ class BookModel extends HTTP {
             }
         });
     }
+
+    // 搜索相关书籍
+    search (start, q) {
+        return this.request({
+            url: 'book/search?summary=1', // 0返回书的详细信息，1返回简要信息
+            data: {
+                q,
+                start
+            }
+        });
+    }
 }
 
 export { BookModel };
