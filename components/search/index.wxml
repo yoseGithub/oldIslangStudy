@@ -34,9 +34,11 @@
     </view>
   </view>
   <view class="books-container" wx:if="{{searching}}">
-    <block wx:for="{{dataArray}}" wx:key="{{item.id}}">
-      <v-book show-like="{{false}}" book="{{item}}" class="book" />
-    </block>
+    <view class="book-list">
+        <block wx:for="{{dataArray}}" wx:key="{{item.id}}">
+        <v-book show-like="{{false}}" book="{{item}}" class="book-item" />
+        </block>
+    </view>
   </view>
   <loading-cmp class="loading" wx:if="{{loading}}" />
   <loading-cmp class="loading-center" wx:if="{{loadingCenter}}" />

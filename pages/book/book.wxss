@@ -61,3 +61,24 @@ page {
     width: 50%;
     padding: 30rpx 0;
 }
+
+.floating {
+    top: 50%;
+    left: auto;
+    right: 16rpx;
+    width: 86rpx;
+    height: 86rpx;
+    transform: translateY(-50%);
+}
+.rules-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 86rpx;
+    height: 86rpx;
+    color: #fff;
+    font-size: 24rpx;
+    border-radius: 50%;
+    background-image: linear-gradient(#bd7090, #b10c4b);
+
+}

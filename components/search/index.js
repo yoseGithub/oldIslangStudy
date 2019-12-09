@@ -5,7 +5,10 @@ Component({
      * 组件的属性列表
      */
     properties: {
-
+        more: {
+            type: String,
+            observer: '_load_more'
+        }
     },
 
     /**
@@ -16,13 +19,29 @@ Component({
         hotWords: [],
         dataArray: [],
         searching: false,
-        q: ''
+        q: '',
+        loading: false
     },
 
     /**
      * 组件的方法列表
      */
     methods: {
+        _load_more() {
+            if (!this.data.q || this.data.loading) return;
+
+            const length = this.data.dataArray.length;
+            this.data.loading = true;
+
+            bookIns.search(length, this.data.q).then(res => {
+                const temArray = this.data.dataArray.concat(res.books);
+                this.setData({
+                    dataArray: temArray
+                });
+                this.data.loading = false;
+            });
+        },
+
         onCancel (e) {
             this.triggerEvent('cancel', {});
         },
@@ -46,7 +65,6 @@ Component({
                     q
                 });
 
-                console.log(res.books.length)
                 // 仅保存有效信息
                 if (res.books.length) {
                     keywordIns.addToHistory(q);

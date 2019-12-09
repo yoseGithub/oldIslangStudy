@@ -1,4 +1,5 @@
 import { bookIns } from "../../utils/instanceModel.js";
+import { random } from '../../utils/common.js';
 
 Page({
 
@@ -10,7 +11,8 @@ Page({
         // promise 支持多个异步等待合并 依然需要回调，但不会剥夺函数的return能力，不需要层层传递callBack
         // async await
         books: [],
-        searching: false
+        searching: false,
+        more: ''
     },
 
     /**
@@ -33,6 +35,12 @@ Page({
     onCancel() {
         this.setData({
             searching: false
+        })
+    },
+
+    onReachBottom () {
+        this.setData({
+            more: random(16)
         })
     },
 
@@ -68,13 +76,6 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
 
     },
 

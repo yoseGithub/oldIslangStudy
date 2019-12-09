@@ -16,4 +16,8 @@
     </view>
 </view>
 
-<v-search wx:if="{{searching}}" bind:cancel="onCancel" />
+<v-search wx:if="{{searching}}" bind:cancel="onCancel" more="{{more}}" />
+
+<v-floating area-class="floating">
+    <text class="rules-btn" slot="content">活动\n规则</text>
+</v-floating>

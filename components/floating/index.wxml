@@ -1,0 +1,11 @@
+<movable-area class="fixed-page">
+    <movable-view
+        id="floating"
+        class="drag-target area-class"
+        x="{{x}}"
+        y="{{y}}"
+        direction="all"
+        bind:touchend="onTouchEnd">
+        <slot name="content"></slot>
+    </movable-view>
+</movable-area>
