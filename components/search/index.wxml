@@ -40,7 +40,9 @@
         </block>
     </view>
   </view>
-  <loading-cmp class="loading" wx:if="{{loading}}" />
-  <loading-cmp class="loading-center" wx:if="{{loadingCenter}}" />
-  <text wx:if="{{empty}}" class="empty-tip">没有搜索到书籍</text>
+  <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到书籍</text>
+
+  <!-- 加载更多 -->
+  <v-loading class="loading" wx:if="{{loading}}" />
+  <v-loading class="loading-center" wx:if="{{loadingCenter}}" />
 </view>

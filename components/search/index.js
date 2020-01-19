@@ -1,13 +1,15 @@
 import { keywordIns, bookIns } from '../../utils/instanceModel.js';
+import { paginationBev } from '../behaviors/pagination.js';
 
 Component({
+    behaviors: [paginationBev],
     /**
      * 组件的属性列表
      */
     properties: {
         more: {
             type: String,
-            observer: '_load_more'
+            observer: 'loadMore'
         }
     },
 
@@ -17,58 +19,83 @@ Component({
     data: {
         historyWords: [],
         hotWords: [],
-        dataArray: [],
         searching: false,
         q: '',
-        loading: false
+        loading: false,
+        loadingCenter: false
     },
 
     /**
      * 组件的方法列表
      */
     methods: {
-        _load_more() {
-            if (!this.data.q || this.data.loading) return;
+        loadMore () {
+            if (!this.data.q || this.isLocked()) return;
 
-            const length = this.data.dataArray.length;
-            this.data.loading = true;
+            if (this.hasMore()) {
+                this.locked();
 
-            bookIns.search(length, this.data.q).then(res => {
-                const temArray = this.data.dataArray.concat(res.books);
-                this.setData({
-                    dataArray: temArray
+                bookIns.search(this.getCurrentStart(), this.data.q).then(res => {
+                    this.setMoreData(res.books);
+                    this.unLocked();
+                }, () => {
+                    // 请求失败，解除死锁
+                    this.unLocked();
                 });
-                this.data.loading = false;
-            });
+            }
         },
 
         onCancel (e) {
+            // 清除原来请求到的数据
+            this.initialize();
             this.triggerEvent('cancel', {});
         },
 
         onDelete (e) {
-            this.setData({
-                searching: false
-            })
+            // 清除原来请求到的数据
+            this.initialize();
+            this._closeResult();
         },
 
         onConfirm (e) {
+            this._showResult();
+            this._showLoadingCenter();
+
+            const q = e.detail.value || e.detail.text;
+            this.setData({
+                q
+            });
+
+            bookIns.search(0, q).then(res => {
+                this.setMoreData(res.books);
+                this.setTotal(res.total);
+
+                this._hideLoadingCenter();
+            });
+        },
+
+        _hideLoadingCenter () {
+            this.setData({
+                loadingCenter: false
+            })
+        },
+
+        _showLoadingCenter () {
+            this.setData({
+                loadingCenter: true
+            })
+        },
+
+        _showResult () {
             this.setData({
                 searching: true
             });
+        },
 
-            const q = e.detail.value || e.detail.text;
-
-            bookIns.search(0, q).then(res => {
-                this.setData({
-                    dataArray: res.books,
-                    q
-                });
-
-                // 仅保存有效信息
-                if (res.books.length) {
-                    keywordIns.addToHistory(q);
-                }
+        _closeResult () {
+            this.setData({
+                searching: false,
+                q: ''
             });
         }
     },

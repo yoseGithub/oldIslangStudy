@@ -1,0 +1,34 @@
+<view class="container">
+  <image src="/images/my/my@bg.png" class="bg"></image>
+  <!-- open-type 只能静默展示用户数据，无法获取用户数据 -->
+  <open-data type="userAvatarUrl" class="avatar avatar-position"></open-data>
+
+  <view wx:if="{{false}}" class="avatar-container avatar-position">
+    <image src="{{userInfo.avatarUrl}}" wx:if="{{hasUserInfo}}" class="avatar" />
+    <open-data wx:if="{{hasUserInfo}}" type="userNickName"></open-data>
+  </view>
+
+  <view class="about-container">
+    <view bind:tap="onJumpToAbout" class="about-us">
+      <image src="/images/my/about.png" />
+      <text class="description">关于我们</text>
+    </view>
+    <view class="about-us">
+      <text class="book-num">{{myBooksCount}}</text>
+      <text class="description">喜欢的书</text>
+    </view>
+  </view>
+
+  <button open-type="getUserInfo" :bindgetuserinfo="getUserInfo">授权</button>
+
+  <view class="like-container" wx:if="{{false}}">
+    <image class=".headline" src="/images/my/like.png" />
+    <view class="preview-container">
+      <block wx:for="{{classics}}">
+        <previe-cmp bind:tap="onPreviewTap" class="preview" classic="{{item}}" />
+      </block>
+    </view>
+  </view>
+</view>
+
+<image wx:if="{{false}}" bind:tap="onStudy" class="study" src="/images/my/study.png"></image>
